@@ -1,6 +1,6 @@
 from collections import OrderedDict
-from pathlib import Path
 
+import numpy as np
 from datasets import load_dataset
 
 _FACTORS_IN_ORDER = ['floor_hue', 'wall_hue', 'object_hue', 'scale', 'shape',
@@ -40,4 +40,5 @@ class ThreeDimShapesDataset(object):
     def __getitem__(self, index):
         data = self.dataset[index]
         X = data['x']
+        X = np.array(X, dtype='float32').squeeze().transpose([0, 3, 1, 2]).astype(np.float32) / 255
         return X
