@@ -40,5 +40,5 @@ class ThreeDimShapesDataset(object):
     def __getitem__(self, index):
         data = self.dataset[index]
         X = data['x']
-        X = np.array(X, dtype=np.float32).squeeze().transpose([0, 3, 1, 2]).astype(np.float32) / 255
+        X = np.stack(X).transpose([0, 3, 1, 2]).astype(np.float32) / 255
         return X
