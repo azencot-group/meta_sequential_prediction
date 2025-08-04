@@ -17,6 +17,7 @@ def loop_seqmodel(manager, model, optimizer, train_loader, config, device):
                 else:
                     optimizer.param_groups[0]['lr'] = config['lr']
                 model.train()
+                print(images.shape)
                 images = torch.transpose(images, 1, 0).to(device)
                 loss,  (loss_bd, loss_orth, _) = model.loss(images,  T_cond=config['T_cond'], return_reg_loss=True, reconst=reconst)
                 optimizer.zero_grad()
