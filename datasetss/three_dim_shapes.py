@@ -31,9 +31,7 @@ class ThreeDimShapesDataset(object):
     def __init__(self, root, train=True, T=3, label_velo=False, transforms=None,
                  active_actions=None, force_moving=False, shared_transition=False, rng=None):
         repo_id = 'TalBarami/msd_3dshapes'
-        token = Path.home().joinpath('.hf', 'token.txt')
-        token = token.read_text().strip()
-        _dataset = load_dataset(repo_id, token=token)
+        _dataset = load_dataset(repo_id)
         self.dataset = _dataset['train']
 
     def __len__(self):
