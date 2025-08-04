@@ -40,6 +40,7 @@ class SeqAELSTSQ(nn.Module):
 
     def _encode_base(self, xs, enc):
         shape = xs.shape
+        print(shape)
         x = torch.reshape(xs, (shape[0] * shape[1], *shape[2:]))
         H = enc(x)
         H = torch.reshape(
